@@ -1,0 +1,99 @@
+#!/usr/bin/env python3
+
+# KGet integrator based on the uGet integrator
+# This more an adaptation. The code was cleaned to remove features not supported by KGet
+# Based on https://github.com/ugetdm/uget-integrator/blob/master/bin/uget-integrator
+
+# Author:  Nicolas Guilloux
+# Email:   novares.x@gmail.com
+# Website: https://nicolasguilloux.eu
+
+import os
+import struct
+import sys
+import threading
+import logging
+import json
+import subprocess
+from os.path import join, expanduser
+
+KGET_COMMAND = 'kget'
+VERSION = "1.0.0"
+creation_flags = 0
+
+logger = logging.getLogger()
+# log_file_path = join(expanduser('~'), 'kget-integrator.log')
+# logging.basicConfig(format='%(asctime)s [%(levelname)s]: %(message)s', filename=log_file_path, filemode='a', level=logging.DEBUG)
+logger.propagate = False
+
+
+def send_message(message):
+    """
+    Send a message to the webapp.
+    """
+    logger.info('Sending message: ' + str(message))
+    try:
+        # Write message size.
+        sys.stdout.buffer.write(struct.pack('I', len(message)))
+        # Write the message itself.
+        sys.stdout.write(message)
+        sys.stdout.flush()
+    except Exception as e:
+        logger.error('Error in sending message: ' + str(e))
+
+
+def read_message():
+    """
+    Read messages from the webapp.
+    """
+    logger.info('kget-integrator is reading the message')
+
+    while 1:
+        # Read the message length (first 4 bytes).
+        text_length_bytes = sys.stdin.buffer.read(4)
+
+        # Unpack message length as 4 byte integer.
+        text_length = struct.unpack('i', text_length_bytes)[0]
+
+        logger.debug('Message length: ' + str(text_length))
+
+        # Read the text (JSON object) of the message.
+        text = sys.stdin.buffer.read(text_length).decode('utf-8')
+
+        logger.debug('Received message: ' + str(text))
+
+        if text:
+            # Return information about the config
+            if not 'URL' in text:
+                kget_version = subprocess.Popen(
+                    [KGET_COMMAND + " --version"], shell=True, stdout=subprocess.PIPE, universal_newlines=True).communicate()[0]
+                kget_version = kget_version.replace('kget', '').strip()
+
+                logger.debug('KGet version: ' + kget_version)
+                send_message('{"Status": "Available", "Version": "' +
+                             VERSION + '", "KGet": "' + kget_version + '"}')
+                return
+
+            send_message('{"Status": "Available", "Version": "' + VERSION + '", "KGet": ""}')
+            data = json.loads(text)
+            url = data['URL']
+
+            if url != "":
+
+                # Execute the command
+                command = [KGET_COMMAND]
+
+                # Add the url(s)
+                command.append(url)
+
+                # Debug
+                logger.debug('Send command: ' + str(command))
+
+                # Pass the parameters to KGet
+                subprocess.Popen(command, creationflags=creation_flags).wait()
+
+            sys.exit(0)
+
+
+if __name__ == '__main__':
+    read_message()

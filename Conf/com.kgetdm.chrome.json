@@ -1,0 +1,9 @@
+{
+    "name": "com.kgetdm.chrome",
+    "description": "Integrate KGet with Google Chrome and Chromium",
+    "path": "/usr/bin/kget-integrator",
+    "type": "stdio",
+    "allowed_origins": [
+        "chrome-extension://ljkdokhieigknmiffbigcbdnoicleikk/"
+    ]
+}
