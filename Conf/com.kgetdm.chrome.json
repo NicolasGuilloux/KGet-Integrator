@@ -4,6 +4,6 @@
     "path": "/usr/bin/kget-integrator",
     "type": "stdio",
     "allowed_origins": [
-        "chrome-extension://ljkdokhieigknmiffbigcbdnoicleikk/"
+        "chrome-extension://emjnglgmgdiiaohdehijalhafcaaobpf/"
     ]
 }
