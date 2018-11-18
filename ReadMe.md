@@ -1,15 +1,15 @@
-# KGet Integration for Google Chrome/Chromium
+# KGet Integration
 
 KGet Integration captures the downloads to download them in KGet. This application is designed for **Linux**.
 
 This work was heavily based on the uGet Integrator. The only changes are a change of name, variables and icons. Plus the kget-integrator is smaller as KGet supports less features.
 
-For Chrome extension, the PEM is put inside to set a fixed extension ID when loaded, useful for the Native messaging configuration file.
+For Chrome extension, the PEM is put inside to set a fixed extension ID when loaded, useful for the Native messaging configuration file. I refused to pay to upload the Chrome/Chromium addon on the Chrome extensions market.
 
 
 ## Installation
 
-Install KGet Integrator: `cp kget-integrator /usr/bin/kget-integrator`
+Install KGet Integrator: `cp kget-integrator /usr/bin/kget-integrator && chmod +x /usr/bin/kget-integrator`
 
 
 ### Chrome installation
