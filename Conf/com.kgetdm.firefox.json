@@ -1,6 +1,6 @@
 {
     "name": "com.kgetdm.firefox",
-    "description": "Integrate uGet with Mozilla Firefox",
+    "description": "Integrate KGet with Mozilla Firefox",
     "path": "/usr/bin/kget-integrator",
     "type": "stdio",
     "allowed_extensions": [
