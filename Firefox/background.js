@@ -11,7 +11,7 @@
  * This addon is the exact copy of the uGet Integration addon with the KGet names and points to the kget-integrator.
  */
 
-var EXTENSION_VERSION = "1.1.0";
+var EXTENSION_VERSION = "1.1.1";
 var REQUIRED_INTEGRATOR_VERSION = "1.1.0";
 var interruptDownloads = true;
 var autoDownloads = false;
