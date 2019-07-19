@@ -60,6 +60,7 @@ $(document).ready(function() {
         $('#mimeToInclude').val(items["kget-mime-include"]);
         $('#fileSize').val(parseInt(items["kget-min-file-size"]) / 1024);
         $('#chk_enable').prop('checked', items["kget-interrupt"] == "true");
+        $('#chk_auto').prop('checked', items["kget-auto-download"] == "true");
     });
 
     // Set event listeners
@@ -67,6 +68,12 @@ $(document).ready(function() {
         var enabled = this.checked;
         current_browser.runtime.getBackgroundPage(function(backgroundPage) {
             backgroundPage.setInterruptDownload(enabled, true);
+        });
+    });
+    $('#chk_auto').change(function() {
+        var enabled = this.checked;
+        current_browser.runtime.getBackgroundPage(function(backgroundPage) {
+            backgroundPage.setAutoDownload(enabled, true);
         });
     });
     $("#fileSize").on("change paste", function() {

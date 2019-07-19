@@ -11,9 +11,10 @@
  * This addon is the exact copy of the uGet Integration addon with the KGet names and points to the kget-integrator.
  */
 
-var EXTENSION_VERSION = "1.0.0";
-var REQUIRED_INTEGRATOR_VERSION = "1.0.0";
+var EXTENSION_VERSION = "1.1.0";
+var REQUIRED_INTEGRATOR_VERSION = "1.1.0";
 var interruptDownloads = true;
+var autoDownloads = false;
 var kgetIntegratorNotFound = true;
 var disposition = '';
 var hostName;
@@ -149,6 +150,15 @@ function readStorage() {
             var interrupt = (items["kget-interrupt"] == "true");
             setInterruptDownload(interrupt);
         }
+
+        // Read the storage for enabled flag
+        if (!items["kget-auto-download"]) {
+            // Keep the value string
+            current_browser.storage.sync.set({ "kget-auto-download": 'false' });
+        } else {
+            var autoDownload = (items["kget-auto-downlaod"] == "true");
+            setAutoDownload(autoDownload);
+        }
     });
 }
 
@@ -245,8 +255,6 @@ function setDownloadHooks() {
         } else {
             url = downloadItem['url'];
         }
-
-        console.log(url);
 
         if (fileSize < minFileSizeToInterrupt && !(isWhiteListedURL(url) || isWhiteListedContent(mime))) {
             return;
@@ -527,6 +535,7 @@ function enableVideoGrabber() {
  * Send message to kget-integrator
  */
 function sendMessageToHost(message) {
+    message.direct = autoDownloads;
     console.log(message)
     current_browser.runtime.sendNativeMessage(hostName, message, function(response) {
         clearMessage();
@@ -563,6 +572,7 @@ function clearMessage() {
     message.Referer = '';
     message.UserAgent = '';
     message.Batch = false;
+    message.direct = false;
 }
 
 /**
@@ -760,6 +770,17 @@ function setInterruptDownload(interrupt, writeToStorage) {
     interruptDownloads = interrupt;
     if (writeToStorage) {
         current_browser.storage.sync.set({ "kget-interrupt": interrupt.toString() });
+    }
+    changeIcon();
+}
+
+/**
+ * Enable/Disable the plugin and update the plugin icon based on the state.
+ */
+function setAutoDownload(autoDownload, writeToStorage) {
+    autoDownloads = autoDownload;
+    if (writeToStorage) {
+        current_browser.storage.sync.set({ "kget-auto-download": autoDownload.toString() });
     }
     changeIcon();
 }

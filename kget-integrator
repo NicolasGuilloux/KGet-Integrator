@@ -18,7 +18,8 @@ import subprocess
 from os.path import join, expanduser
 
 KGET_COMMAND = 'kget'
-VERSION = "1.0.0"
+KGET_DIRECT_DOWNLOAD = ['qdbus', 'org.kde.kget', '/KGet', 'org.kde.kget.main.addTransfer', 'URL', 'DOWNLOAD_FOLDER', 'true']
+VERSION = "1.1.0"
 creation_flags = 0
 
 logger = logging.getLogger()
@@ -77,14 +78,26 @@ def read_message():
             send_message('{"Status": "Available", "Version": "' + VERSION + '", "KGet": ""}')
             data = json.loads(text)
             url = data['URL']
+            direct = False
+
+            if 'direct' in data:
+                direct = data['direct']
+
+            logger.debug('Direct Download: ' + str(direct))
 
             if url != "":
 
                 # Execute the command
-                command = [KGET_COMMAND]
+                if (direct):
+                    download_folder = subprocess.Popen(['xdg-user-dir DOWNLOAD'], shell=True, stdout=subprocess.PIPE, universal_newlines=True).communicate()[0].strip()
+                    logger.debug('Download folder: ' + download_folder)
 
-                # Add the url(s)
-                command.append(url)
+                    command = KGET_DIRECT_DOWNLOAD
+                    command[4] = url
+                    command[5] = download_folder + '/'
+                else:
+                    command = [KGET_COMMAND]
+                    command.append(url)
 
                 # Debug
                 logger.debug('Send command: ' + str(command))
