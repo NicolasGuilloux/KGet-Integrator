@@ -12,7 +12,7 @@ For Chrome extension, the PEM is put inside to set a fixed extension ID when loa
 Install KGet Integrator: `cp kget-integrator /usr/bin/kget-integrator && chmod +x /usr/bin/kget-integrator`
 
 
-### Chrome installation
+### Chrome/Chromium/Brave installation
 
 Install the Native messaging hosts: `cp Conf/com.kgetdm.chrome.json /etc/chromium/native-messaging-hosts/com.kgetdm.chrome.json`
 
