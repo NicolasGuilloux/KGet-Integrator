@@ -12,6 +12,4 @@ before_script:
     - npm install
 
 script:
-    - echo -e $PRIVAYE_KEY >> key.pem
-    - cat key.pem
     - ./node_modules/.bin/crx pack ./Chrome --output KGetIntegrator_Chrome.crx --private-key ./key.pem
