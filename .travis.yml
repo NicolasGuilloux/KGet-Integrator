@@ -10,4 +10,4 @@ branches:
 
 script:
     - echo $PRIVAYE_KEY >> key.pem
-    - chrome --pack-extension=./Chrome --pack-extension-key=./key.pem
+    - google-chrome --pack-extension=./Chrome --pack-extension-key=./key.pem
