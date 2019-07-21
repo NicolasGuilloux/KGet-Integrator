@@ -1,8 +1,10 @@
 # KGet Integration
 
+[![Pipeline](https://travis-ci.org/NicolasGuilloux/KGet-Integrator.svg?branch=master)](https://travis-ci.org/NicolasGuilloux/KGet-Integrator)
+
 KGet Integration captures the downloads to download them in KGet. This application is designed for **Linux**.
 
-This work was heavily based on the uGet Integrator. The only changes are a change of name, variables and icons. Plus the kget-integrator is smaller as KGet supports less features.
+This work was heavily based on the uGet Integrator. Most changes are the name, variables and icons. Plus the kget-integrator is smaller as KGet supports less features.
 
 For Chrome extension, the PEM is put inside to set a fixed extension ID when loaded, useful for the Native messaging configuration file. I refused to pay to upload the Chrome/Chromium addon on the Chrome extensions market.
 
@@ -14,7 +16,13 @@ Install KGet Integrator: `cp kget-integrator /usr/bin/kget-integrator && chmod +
 
 ### Chrome/Chromium/Brave installation
 
-Install the Native messaging hosts: `cp Conf/com.kgetdm.chrome.json /etc/chromium/native-messaging-hosts/com.kgetdm.chrome.json`
+Install the Native messaging hosts: `cp Conf/com.kgetdm.chrome.json /etc/chromium/native-messaging-hosts/com.kgetdm.chrome.json`. You may have to create this folder.
+
+#### From the packed extension
+
+You can find the latest extension packed from the [releases](https://github.com/NicolasGuilloux/KGet-Integrator/releases).
+
+#### Load from sources
 
 Open the extension page: `chrome://extensions/`
 
@@ -22,10 +30,14 @@ Put the Chrome folder where you want, it should not move after this step.
 
 Click on the button "Load an unpacked extension" and select the "Chrome" folder.
 
+Copy the extension ID (something like `chrome-extension://ID_HASH`).
+
+Edit the `/etc/chromium/native-messaging-hosts/com.kgetdm.chrome.json` and add your ID to the `allowed_origins` key.
+
 
 ### Firefox installation
 
-Install the Native messaging hosts: `cp Conf/com.kgetdm.firefox.json /usr/lib/mozilla/native-messaging-hosts/com.kgetdm.firefox.json`
+Install the Native messaging hosts: `cp Conf/com.kgetdm.firefox.json /usr/lib/mozilla/native-messaging-hosts/com.kgetdm.firefox.json`. You may have to create this folder.
 
 Install the extension: https://addons.mozilla.org/fr/firefox/addon/kget-integration/
 
