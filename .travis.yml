@@ -5,6 +5,7 @@ before_script:
 
 script:
     - ./node_modules/.bin/crx pack ./Chrome --output KGetIntegrator_Chrome.crx --private-key ./key.pem
+    - touch KGetIntegrator_Chrome.crx
 
 deploy:
     provider: releases
