@@ -1,0 +1,28 @@
+{
+  "name": "kget-integrator",
+  "version": "1.1.0",
+  "description": "Kget integration for web browsers",
+  "main": "index.js",
+  "scripts": {
+    "pack": "crx pack --output KgetIntegrator.crx --private_key ./key.pem ./Chrome",
+    "test": "crx pack --help"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicolasGuilloux/KGet-Integrator.git"
+  },
+  "keywords": [
+    "kget",
+    "integration",
+    "browser"
+  ],
+  "author": "Nicolas Guilloux",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NicolasGuilloux/KGet-Integrator/issues"
+  },
+  "homepage": "https://github.com/NicolasGuilloux/KGet-Integrator#readme",
+  "dependencies": {
+    "crx": "^5.0.0"
+  }
+}

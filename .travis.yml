@@ -1,14 +1,16 @@
 addons:
-    chrome: stable
+    chrome: npm
     artifacts:
         paths:
-            - Chrome.crx
+            - KgetIntegrator.crx
 
 branches:
     only:
         - master
 
+before_script:
+    - npm install
+
 script:
     - echo $PRIVAYE_KEY >> key.pem
-    - ls -la
-    - google-chrome-stable --pack-extension=./Chrome --pack-extension-key=./key.pem
+    - npm pack

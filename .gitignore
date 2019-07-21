@@ -1,2 +1,6 @@
+# Key
+*.pem
+
 # Builds
-Chrome.crx
+node_modules
+KgetIntegrator.crx
