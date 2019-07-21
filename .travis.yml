@@ -10,4 +10,5 @@ branches:
 
 script:
     - echo $PRIVAYE_KEY >> key.pem
+    - ls -la
     - google-chrome-stable --pack-extension=./Chrome --pack-extension-key=./key.pem
