@@ -1,3 +1,6 @@
 # Builds
 node_modules
 *.crx
+
+# Editor
+.idea

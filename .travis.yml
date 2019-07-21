@@ -4,8 +4,8 @@ before_script:
     - npm install
 
 script:
+    - echo "Packaging the Chromium extension"
     - ./node_modules/.bin/crx pack ./Chrome --output KGetIntegrator_Chrome.crx --private-key ./key.pem
-    - touch KGetIntegrator_Chrome.crx
 
 deploy:
     provider: releases

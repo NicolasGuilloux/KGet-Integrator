@@ -1,6 +1,11 @@
 {
-    "update_url": "https://clients2.google.com/service/update2/crx",
-    "offline_enabled": true,
+    "name": "KGet Integration",
+    "description": "KGet Browser Integration extension.",
+    "short_name": "KGet",
+    "homepage_url": "https://github.com/NicolasGuilloux/KGet-Integrator",
+    "version": "1.1.1",
+    "manifest_version": 2,
+    "minimum_chrome_version": "19.0",
     "background": {
         "scripts": [
             "background.js"
@@ -20,18 +25,12 @@
             "description": "Toggle interruption"
         }
     },
-    "description": "KGet Browser Integration extension.",
-    "homepage_url": "https://github.com/NicolasGuilloux/KGet-Integrator",
     "icons": {
         "32": "icon_32.png",
         "48": "icon_48.png",
         "64": "icon_64.png",
         "128": "icon_128.png"
     },
-    "manifest_version": 2,
-    "minimum_chrome_version": "19.0",
-    "name": "KGet Integration",
-    "short_name": "KGet",
     "permissions": [
         "<all_urls>",
         "webRequest",
@@ -43,7 +42,5 @@
         "cookies",
         "activeTab",
         "tabs"
-    ],
-    "version": "1.1.1",
-    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzheiQbC/WIyrVuEsE3pDIn7Ghh2Amh0xx0R9Nun5lu7tUYk+NPaLE4GQ+3WWj6RHE+djGjjmvEu6CRW3S5eSa+3luFW7w9f3+WGYayq5FBio26WwN+owOqFMR/wu6QN5LOOWOraWEVayNvGb6AfwcIs0Ed4/Xfa9RRFB8dphfY6CJvAsy661TtNuE/7//nFsditYOC5KUoJXD2JqRG8jtFIws5nhZMZt3wq6M+FL4WnQMmpjQgzwuokTMUgbmFD0oKR7PW9aibK18QpJIAq4f+Xvv5t0uSi5iA+FuA5ekJXUn3acU/vxoHqTNZ4BwkFEFxEzbE0niarHzLQGhNNXEwIDAQAB"
+    ]
 }

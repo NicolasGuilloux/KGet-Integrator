@@ -1,4 +1,11 @@
 {
+    "name": "KGet Integration",
+    "description": "KGet Browser Integration extension.",
+    "short_name": "KGet",
+    "homepage_url": "https://github.com/NicolasGuilloux/KGet-Integrator",
+    "version": "1.1.1",
+    "manifest_version": 2,
+    "minimum_chrome_version": "19.0",
     "applications": {
         "gecko": {
             "id": "kget-integrator@nicolasguilloux.eu",
@@ -24,18 +31,12 @@
             "description": "Toggle interruption"
         }
     },
-    "description": "KGet Browser Integration extension.",
-    "homepage_url": "https://github.com/NicolasGuilloux/KGet-Integrator",
     "icons": {
         "32": "icon_32.png",
         "48": "icon_48.png",
         "64": "icon_64.png",
         "128": "icon_128.png"
     },
-    "manifest_version": 2,
-    "minimum_chrome_version": "19.0",
-    "name": "KGet Integration",
-    "short_name": "KGet",
     "permissions": [
         "<all_urls>",
         "webRequest",
@@ -48,5 +49,4 @@
         "activeTab",
         "tabs"
     ],
-    "version": "1.1.1"
 }
