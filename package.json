@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/NicolasGuilloux/KGet-Integrator#readme",
   "dependencies": {
-    "crx": "^5.0.0"
+    "crx": "^5.0.0",
+    "travis": "^0.1.1"
   }
 }

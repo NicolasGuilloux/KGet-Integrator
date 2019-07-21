@@ -1,15 +1,15 @@
-addons:
-    chrome: npm
-    artifacts:
-        paths:
-            - KGetIntegrator_Chrome.crx
-
-branches:
-    only:
-        - master
+language: generic
 
 before_script:
     - npm install
 
 script:
     - ./node_modules/.bin/crx pack ./Chrome --output KGetIntegrator_Chrome.crx --private-key ./key.pem
+
+deploy:
+    provider: releases
+    api_key:
+        secure: qS5KCA08vHDs6PHJ+efuGB5VJcZQKNg0G3tAAuRDhVyD83sB+nwQVkwPIKOeu9Ntt0S6KPlxA/5B/6KCiyr/R3I8e5Psal/UZCvU0N+RiusC9h+Sli1dkmDX0Mcavo2XTFMoLXpO2ASVCJmCY7xkz59cLHhP9X1XaiguXxakNk4kBPyBNBZIRGG3aBrFGhQNZauUPA8MfqtuKdUCD4krGJbdh7+hRrhc5+kLHddLiv1CQmG2MsRtX3ATO7LFTzPV3iv34P6URqF7rdqzu1Gv18gZjkmSfNU2F13+BI1ab73Xk/TOvXyhlbH3cRRojJeZ2YjlYs6d1vvOKrmZrpU7M8N+51gH776T6Ye4sp+qC5s4xjpDGHy2Lx7Mvn1YYqLPh5Jse6r9iUmF2H1A9XMwaiQd2JMvwD2jkYoXiRXdrF5TMzKH/DCdBB2xdiAAibxleceJ5S2pW7OLHRB3e8qbw8nuS53z2KS2K3bh30584Tt4XZ9J5QadRlb32aLMmwjLvjngWctb70O3XOnl84cfq7xnhf2/WOOQ/HmtIBlK6LjJxkxkx15rWTyNjO1CA1w8O6N60TrYzKEgBuvU9LzI/tX01DuSj8Z0eXEOIP5KoVTdU+SXaZQDYN3hGExqYewmKoiaB7R6GJIWJIaLGN9Sp/JgbZaKQDRggi+8RPWKDjc=
+    file: KGetIntegrator_Chrome.crx
+    on:
+        repo: NicolasGuilloux/KGet-Integrator
