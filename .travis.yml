@@ -1,0 +1,13 @@
+addons:
+    chrome: stable
+    artifacts:
+        paths:
+            - Chrome.crx
+
+branches:
+    only:
+        - master
+
+script:
+    - echo $PRIVAYE_KEY >> key.pem
+    - chrome --pack-extension=./Chrome --pack-extension-key=./key.pem
