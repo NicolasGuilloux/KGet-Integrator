@@ -3,4 +3,4 @@
 
 # Builds
 node_modules
-KgetIntegrator.crx
+*.crx

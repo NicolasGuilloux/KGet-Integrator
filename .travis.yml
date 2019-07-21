@@ -2,7 +2,7 @@ addons:
     chrome: npm
     artifacts:
         paths:
-            - KgetIntegrator.crx
+            - KGetIntegrator_Chrome.crx
 
 branches:
     only:
@@ -13,4 +13,4 @@ before_script:
 
 script:
     - echo $PRIVAYE_KEY >> key.pem
-    - npm pack
+    - ./node_modules/.bin/crx pack ./Chrome --output KGetIntegrator_Chrome.crx --private-key ./key.pem
