@@ -8,8 +8,16 @@ This work was heavily based on the uGet Integrator. Most changes are the name, v
 
 For Chrome extension, the PEM is put inside to set a fixed extension ID when loaded, useful for the Native messaging configuration file. I refused to pay to upload the Chrome/Chromium addon on the Chrome extensions market.
 
+# Maintenance
+
+I developped it on my free time and actually quite quickly. This extension has not guarantee to work properly and I will not maintain it as fast as possible but only when I get the time to look at it.
+
+For this reasons, don't mind if I take some time to answer to the issues. I am sorry for that. Moreover, feel free to fork and improve it.
+
 
 ## Installation
+
+The following lines considers that you opened a terminal and went into the cloned repository.
 
 Install KGet Integrator: `cp kget-integrator /usr/bin/kget-integrator && chmod +x /usr/bin/kget-integrator`
 
@@ -37,7 +45,19 @@ Edit the `/etc/chromium/native-messaging-hosts/com.kgetdm.chrome.json` and add y
 
 ### Firefox installation
 
-Install the Native messaging hosts: `cp Conf/com.kgetdm.firefox.json /usr/lib/mozilla/native-messaging-hosts/com.kgetdm.firefox.json`. You may have to create this folder.
+Install the Native messaging hosts for firefox with the following lines.
+
+```
+mkdir -p /usr/lib/mozilla/native-messaging-hosts
+cp Conf/com.kgetdm.firefox.json /usr/lib/mozilla/native-messaging-hosts/com.kgetdm.firefox.json
+```
+
+Some distributions may require to put this native message host into the lib64. I would rather recommand you to symlink it.
+
+```
+mkdir -p /usr/lib64/mozilla/native-messaging-hosts
+ln -s /usr/lib/mozilla/native-messaging-hosts/com.kgetdm.firefox.json /usr/lib64/mozilla/native-messaging-hosts
+```
 
 Install the extension: https://addons.mozilla.org/fr/firefox/addon/kget-integration/
 
